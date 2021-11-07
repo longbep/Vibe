@@ -15,5 +15,5 @@ for filename in os.listdir('./cogs'):
   if(filename.endswith('.py') and filename != '__init__.py'):
     client.load_extension(f'cogs.{filename[:-3]}')
 
-keep_alive()
+# keep_alive()
 client.run(os.getenv('TOKEN')) 
