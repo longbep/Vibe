@@ -46,7 +46,7 @@ class SettingControl(commands.Cog):
     with open('config/server_language.json','w') as f:
       json.dump(lang,f,indent = 4)  
 
-  @commands.command(brief = "Change server prefix.", help = "prefix [prefix]\nChange server prefix.")
+  @commands.command()
   @commands.guild_only()
   async def prefix(self,ctx,pre):
     with open('config/prefixes.json','r') as f:
@@ -56,9 +56,10 @@ class SettingControl(commands.Cog):
 
     with open('config/prefixes.json','w') as f:
       json.dump(prefixes,f,indent = 4)
+
     await ctx.send(embed=discord.Embed(title="",description=eval("f'{}'".format(self.config["prefix"]))))
 
-  @commands.command(aliases=["lang"],brief = "Change server language.", help = "language / lang [eng/vie]\nChange server language (English, Tiếng Việt).")
+  @commands.command(aliases=["lang"])
   @commands.guild_only()
   async def language(self,ctx,language):
     with open('config/server_language.json','r') as f:
@@ -69,6 +70,14 @@ class SettingControl(commands.Cog):
 
     with open('config/server_language.json','w') as f:
       json.dump(lang,f,indent = 4)
+
+    with open('config/server_language.json','r') as f:
+      lang = json.load(f)
+    language =  lang[str(ctx.guild.id)]
+
+    with open('config/language.json','r') as f:
+      conf = json.load(f)
+    self.config = conf[language]
     await ctx.send(embed=discord.Embed(title="",description=eval("f'{}'".format(self.config["language"]))))
 
   @commands.Cog.listener()
@@ -80,13 +89,57 @@ def setup(client):
   client.add_cog(SettingControl(client))
 
 class CustomHelpCommand(commands.HelpCommand):
+
   def __init__(self):
     super().__init__()
+    self.config=None
+    self.prefix=None
   
   async def send_bot_help(self,mapping):
-    embed = discord.Embed()
+    if self.context.guild is None:
+      language = "eng"
+      self.prefix = "-"
+    else:
+      with open('config/server_language.json','r') as f:
+        lang = json.load(f)
+      language =  lang[str(self.context.guild.id)]
+      with open('config/prefixes.json','r') as f:
+        prefixes = json.load(f)
+      self.prefix = prefixes[str(self.context.guild.id)]
+
+    with open('config/language.json','r') as f:
+      conf = json.load(f)
+    self.config = conf[language]
+
+    embed = discord.Embed(description=self.config["help_description"])
     
     embed.set_author(name = self.context.bot.user.name, icon_url = self.context.bot.user.avatar_url)
+    embed.add_field(name=self.config["command"],value="\u200b",inline=False)
+    for cog in mapping:
+      if cog!=None:
+        if cog.qualified_name != "CogControl":
+          for command in mapping[cog]:
+            embed.add_field(name=f"`{self.prefix}{command.name}`",value=self.config[command.name+"_brief"]+str(command.aliases),inline=True)
+
+    embed.add_field(name=self.config["invite_name"],value=self.config["invite_value"],inline=False)
+    embed.set_footer(text=eval("f'{}'".format(self.config["help_footer"])))
     await self.get_destination().send(embed=embed)
 
-  # async def send_command_help(self,command):
+  async def send_command_help(self,command):
+    if self.context.guild is None:
+      language = "eng"
+      self.prefix = "-"
+    else:
+      with open('config/server_language.json','r') as f:
+        lang = json.load(f)
+      language =  lang[str(self.context.guild.id)]
+      with open('config/prefixes.json','r') as f:
+        prefixes = json.load(f)
+      self.prefix = prefixes[str(self.context.guild.id)]
+
+    with open('config/language.json','r') as f:
+      conf = json.load(f)
+    self.config = conf[language]
+    embed = discord.Embed(title=f"**{self.prefix}{command.name}**")
+    embed.add_field(name=eval("f'{}'".format(self.config["help_command"])),value =self.config[command.name+"_help"])
+    await self.get_destination().send(embed=embed)

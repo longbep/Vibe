@@ -1,7 +1,7 @@
 from discord.ext import commands
 import os
 from cogs.setting_control import CustomHelpCommand 
-from keep_alive import keep_alive
+# from utils.keep_alive import keep_alive
 import json
 
 def get_prefix(client,message):
