@@ -64,12 +64,12 @@ class MusicControl(commands.Cog):
     if not player:
       player = self.music.create_player(ctx,ffmpeg_error_betterfix=True)
     if not ctx.voice_client.is_playing():
-      await player.queue(url, search=True)
+      await player.queue(url, bettersearch=True)
       song = await player.play()
       embed = discord.Embed(title=self.config["now_playing"],description=f"[{song.name}]({song.url})")
       await ctx.send(embed=embed)
     else:
-        song = await player.queue(url, search=True)
+        song = await player.queue(url, bettersearch=True)
         await ctx.send(embed=discord.Embed(title="",description=eval("f'{}'".format(self.config["queue_song"]))))
     self.checkPlaying.start(ctx)
 
