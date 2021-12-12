@@ -1,5 +1,9 @@
 {
-  "eng" : {
+  "lang": {
+        "eng": "English",
+        "vie": "Ti\u1ebfng Vi\u1ec7t"
+    },
+    "eng" : {
     "join" : "Joined your voice channel!",
     "notinvoice" : "You are not currently in a voice channel!",
     "leave" : "Left your voice channel!",
@@ -9,14 +13,14 @@
     "pause" : "Paused [{song.name}]({song.url})",
     "resume" : "Resumed [{song.name}]({song.url})",
     "queue" : "Song queue:",
-    "queue_end" : "This is the end of the queue!\nUse {ctx.preifx}play to add more",
+    "queue_end" : "This is the end of the queue!\nUse {ctx.prefix}play to add more",
     "stop" : "Stopped",
     "skip" : "Skipped [{data[0].name}]({data[0].url})",
     "volume" : "Changed volume for [{song.name}]({song.url}) to {volume*100}%",
     "remove" : "Removed [{song.name}]({song.url}) from queue",
     "auto_leave" : "I left the voice channel because I was inactive for too long.",
     "prefix" : "Server prefix changed to: {pre}",
-    "language" : "Server language changed to: {lng}",
+    "language" : "Server language changed to: {conf[\"lang\"][language]}",
     "np_author" : "Author",
     "np_view" : "Views",
     "np_duration":  "Duration",
@@ -70,7 +74,7 @@
     "remove" : "Xóa bài [{song.name}]({song.url}) ra khỏi danh sách",
     "auto_leave" : "Bot đã rời phòng voice vì không hoạt động quá lâu",
     "prefix" : "Prefix của server chuyển sang: {pre}",
-    "language" : "Ngôn ngữ của server chuyển sang: {lng}",
+    "language" : "Ngôn ngữ của server chuyển sang: {conf[\"lang\"][language]}",
     "np_author" : "Tác giả",
     "np_view" : "Lượt xem",
     "np_duration":  "Thời lượng",

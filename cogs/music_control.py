@@ -12,9 +12,8 @@ class MusicControl(commands.Cog):
 
   @commands.Cog.listener()
   async def on_message(self,message):
-    with open('config/server_language.json','r') as f:
-      lang = json.load(f)
-    language =  lang[str(message.guild.id)]
+    data = await self.client.config.find(str(message.guild.id))
+    language =  data["language"]
 
     with open('config/language.json','r') as f:
       conf = json.load(f)
