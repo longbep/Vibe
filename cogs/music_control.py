@@ -144,7 +144,7 @@ class MusicControl(commands.Cog):
     botvoice = ctx.guild.me.voice
     if botvoice is not None:
       if player is None or player is not None and player.now_playing() is None:
-        await asyncio.sleep(120)
+        await asyncio.sleep(300)
         if player is None or player is not None and player.now_playing() is None:
           await ctx.voice_client.disconnect()
           await ctx.send(embed=discord.Embed(title="",description=self.config["auto_leave"]))

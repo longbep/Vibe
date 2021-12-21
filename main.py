@@ -16,7 +16,7 @@ client = commands.Bot(command_prefix=get_prefix,help_command= CustomHelpCommand(
 
 @client.event
 async def on_ready():
-  await client.change_presence(activity = discord.Activity(name="-help",type = discord.ActivityType.listening))
+  await client.change_presence(activity = discord.Activity(name="-help | Testing Spotify",type = discord.ActivityType.listening))
   client.connection_url = os.getenv('MONGO')
   client.mongo = motor.motor_asyncio.AsyncIOMotorClient(str(client.connection_url))
   client.db = client.mongo['vibebot']
