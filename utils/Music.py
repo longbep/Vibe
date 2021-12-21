@@ -1,6 +1,4 @@
-import asyncio
 import aiohttp
-import re
 try:
     import youtube_dl
     import discord
@@ -21,7 +19,34 @@ class NotConnectedToVoice(Exception):
 class NotPlaying(Exception):
     """Cannot <do something> because nothing is being played"""
     
+def clean_link(url):
+    if url.startswith("https://m."):
+        url = url.replace("https://m.", "https://")
+    if url.startswith("http://m."):
+        url = url.replace("http://m.", "https://")
+    return url
+
+async def get_spotify_title(url):
+  async with aiohttp.ClientSession(headers={'User-Agent': 'python-requests/2.20.0'}) as session:
+    async with session.get(url) as resp:
+      html = await resp.text()
+  index = html.find('<title>')
+  title = ""
+  while True:
+    char = html[index]
+    if char == '|':
+      break
+    title += char
+    index += 1
+  title = title.replace('- song by', '')
+  return title
+
 async def ytbettersearch(query):
+    if "https://open.spotify.com/" in query:
+      query = await get_spotify_title(query)
+
+    if "https://www.youtube.com/watch?v" in query:
+      return query
     url = f"https://www.youtube.com/results?search_query={query}"
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as resp:
@@ -41,6 +66,7 @@ async def get_video_data(url, search, bettersearch, loop):
     if not has_voice:
         raise RuntimeError("youtube_dl install needed in order to use voice")
 
+    url = clean_link(url)
     if not search and not bettersearch:
         data = await loop.run_in_executor(None, lambda: ydl.extract_info(url, download=False))
         source = data["url"]
