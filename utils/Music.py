@@ -163,8 +163,8 @@ class Music(object):
                 return player
             elif not channel and guild and player.ctx.guild.id == guild:
                 return player
-        else:
-            return None
+            else:
+                return None
 
 class MusicPlayer(object):
     def __init__(self, ctx, music, **kwargs):

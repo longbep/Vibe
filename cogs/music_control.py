@@ -114,7 +114,7 @@ class MusicControl(commands.Cog):
     embed.set_thumbnail(url = song.thumbnail)
     embed.add_field(name=self.config["np_author"], value=f"[{song.channel}]({song.channel_url})",inline = True)
     embed.add_field(name=self.config["np_view"], value=f'{song.views:,}',inline = True)
-    embed.add_field(name=self.config["np_duration"], value=f'{int(int(song.duration)/60)}:{int(song.duration)%60}',inline = True)
+    embed.add_field(name=self.config["np_duration"], value=f'{int(int(song.duration)/60)}:{int(song.duration)%60:02d}',inline = True)
     await ctx.send(embed=embed)
     
   @commands.command()
