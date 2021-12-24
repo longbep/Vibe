@@ -3,7 +3,7 @@
         "eng": "English",
         "vie": "Ti\u1ebfng Vi\u1ec7t"
     },
-    "eng" : {
+  "eng" : {
     "join" : "Joined your voice channel!",
     "notinvoice" : "You are not currently in a voice channel!",
     "leave" : "Left your voice channel!",
@@ -13,7 +13,7 @@
     "pause" : "Paused [{song.name}]({song.url})",
     "resume" : "Resumed [{song.name}]({song.url})",
     "queue" : "Song queue:",
-    "queue_end" : "This is the end of the queue!\nUse {ctx.prefix}play to add more",
+    "queue_end" : "This is the end of the queue! {ctx.prefix}Use play to add more",
     "stop" : "Stopped",
     "skip" : "Skipped [{data[0].name}]({data[0].url})",
     "volume" : "Changed volume for [{song.name}]({song.url}) to {volume*100}%",
