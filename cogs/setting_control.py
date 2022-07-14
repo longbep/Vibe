@@ -19,7 +19,7 @@ class SettingControl(commands.Cog):
 
   @commands.Cog.listener()
   async def on_guild_join(self,guild):
-    await self.client.config.insert({"_id": str(guild.id), "prefix": "-","language":"eng"})
+    await self.client.config.insert({"_id": str(guild.id),"name": str(guild.name), "prefix": "-","language":"eng"})
 
   @commands.Cog.listener()
   async def on_guild_remove(self,guild):
