@@ -8,7 +8,7 @@ except ImportError:
 
 if has_voice:
     youtube_dl.utils.bug_reports_message = lambda: ''
-    ydl = youtube_dl.YoutubeDL({"format": "bestaudio/best", "restrictfilenames": True, "noplaylist": True, "nocheckcertificate": True, "ignoreerrors": True, "logtostderr": False, "quiet": True,"verbose":True, "no_warnings": True, "source_address": "0.0.0.0"})
+    ydl = youtube_dl.YoutubeDL({"format": "bestaudio/worstvideo", "restrictfilenames": True, "noplaylist": True, "nocheckcertificate": True, "ignoreerrors": True, "logtostderr": False, "quiet": True,"verbose":True, "no_warnings": True, "source_address": "0.0.0.0"})
 
 class EmptyQueue(Exception):
     """Cannot skip because queue is empty"""
