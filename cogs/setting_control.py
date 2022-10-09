@@ -40,14 +40,13 @@ class SettingControl(commands.Cog):
     listLanguage = list(temp["lang"].keys())
     if language not in listLanguage:
       await ctx.send(embed=discord.Embed(title="",description=self.config["notsp_lang"]))
-      return
-      
-    await self.client.config.upsert({"_id": str(ctx.guild.id), "language": language})
-    with open('config/language.json','r') as f:
-      conf = json.load(f)
-    self.config = conf[language]
-
-    await ctx.send(embed=discord.Embed(title="",description=eval("f'{}'".format(self.config["language"]))))
+    else:
+      await self.client.config.upsert({"_id": str(ctx.guild.id), "language": language})
+      with open('config/language.json','r') as f:
+        conf = json.load(f)
+      self.config = conf[language]
+  
+      await ctx.send(embed=discord.Embed(title="",description=eval("f'{}'".format(self.config["language"]))))
 
   @commands.Cog.listener()
   async def on_command_error(self,ctx, error):
