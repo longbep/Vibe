@@ -35,6 +35,13 @@ class SettingControl(commands.Cog):
   @commands.command(aliases=["lang"])
   @commands.guild_only()
   async def language(self,ctx,language):
+    with open('config/language.json','r') as f:
+      temp = json.load(f)
+    listLanguage = list(temp["lang"].keys())
+    if language not in listLanguage:
+      await ctx.send(embed=discord.Embed(title="",description=self.config["notsp_lang"]))
+      return
+      
     await self.client.config.upsert({"_id": str(ctx.guild.id), "language": language})
     with open('config/language.json','r') as f:
       conf = json.load(f)

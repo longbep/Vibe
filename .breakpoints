@@ -1,12 +1,3 @@
 {
-  "files": {
-    "cogs/music_control.py": [
-      {
-        "id": "f55119d9-e8d8-4011-a4fd-61a71885034f",
-        "line": 7,
-        "version": 3316,
-        "index": 113
-      }
-    ]
-  }
+  "files": {}
 }

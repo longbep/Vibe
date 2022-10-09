@@ -73,7 +73,8 @@
         "[Click here](https://discord.com/api/oauth2/authorize?client_id=892329382008459305&permissions=36817920&scope=bot) to invite Vibe bot to your server.\n\u200b",
         "help_footer":
         "Type \"{self.prefix}help command\" for more info on a command.",
-        "help_command": "Aliases: {str(command.aliases)}"
+        "help_command": "Aliases: {str(command.aliases)}",
+        "notsp_lang": "Language is not supported (eng/vie)"
     },
     "vie": {
         "join": "Kết nối vào phòng voice!",
@@ -145,6 +146,7 @@
         "Mời Vibe bot vào server của bạn [tại đây](https://discord.com/api/oauth2/authorize?client_id=892329382008459305&permissions=36817920&scope=bot) \n\u200b",
         "help_footer":
         "Dùng lệnh \"{self.prefix}help lệnh\" để xem thông tin chi tiết của 1 lệnh.",
-        "help_command": "Các lệnh tương tự: {str(command.aliases)}"
+        "help_command": "Các lệnh tương tự: {str(command.aliases)}",
+        "notsp_lang": "Ngôn ngữ không được hỗ trợ (eng/vie)"
     }
 }
