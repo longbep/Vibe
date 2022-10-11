@@ -23,7 +23,7 @@ To get started, join a voice channel and use the default command -play with a so
 -loop - Loop current song.
 
 # More info
-Link invite: https://discord.com/login?redirect_to=%2Foauth2%2Fauthorize%3Fclient_id%3D892329382008459305%26permissions%3D36817920%26scope%3Dbot
+Link invite: https://discord.com/oauth2/authorize?client_id=892329382008459305&permissions=36817920&scope=bot
 
 Top.gg: https://top.gg/bot/892329382008459305
 
