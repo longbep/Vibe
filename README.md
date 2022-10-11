@@ -22,7 +22,7 @@ To get started, join a voice channel and use the default command -play with a so
 -remove - Remove the specified track from the queue.
 -loop - Loop current song.
 
-#More info
+# More info
 Link invite: https://discord.com/login?redirect_to=%2Foauth2%2Fauthorize%3Fclient_id%3D892329382008459305%26permissions%3D36817920%26scope%3Dbot
 Top.gg: https://top.gg/bot/892329382008459305
 Discord Support Server: https://discord.com/invite/ybCs9vBTmk
